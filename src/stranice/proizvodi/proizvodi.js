@@ -166,9 +166,8 @@ class Proizvodi extends Component {
       }
     }
 
-    localStorage.setItem("2", JSON.stringify(objec));
-    console.log(localStorage.getItem("2"));
-    let path = "/product";
+    var st = JSON.stringify(objec.id)
+    let path = "/product/"+objec.id;
     this.props.history.push(path);
   };
 

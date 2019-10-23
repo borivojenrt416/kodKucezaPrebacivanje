@@ -7,9 +7,13 @@
     margin-top:1.5vw;
 }
 .kartica{
-    height: 28vw;
+    height: 30vw;
 }
 
 .kol input{
     width:9vw;
+}
+
+.slika{
+    margin-bottom:1.5vw
 }

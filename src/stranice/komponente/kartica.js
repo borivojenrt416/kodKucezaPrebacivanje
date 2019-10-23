@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./kartica.css";
 import Fav from '../fav/fav'
+import {
+  Link,
+} from "react-router-dom";
 class Kartica extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +15,16 @@ class Kartica extends Component {
 
 
   render() {
-    // console.log(this.props.p[0].data);
+    
     const visina = {
-      height:'23.5vw'
+      height:'26vw'
+    }
+    const vidljivo={
+      textDecoration:'none',
+      border:'1px solid black',
+      padding:'0.5vw',
+      borderRadius:'5%',
+      color:'black'
     }
     return (
   
@@ -34,8 +44,9 @@ class Kartica extends Component {
                 <h5 className="cont">{d.content}</h5>
                 <div className="slika">
                   <img src={d.img} onMouseOver={this.prikazi} />
-                  <input type="button" id={d.title} className="vidljivo" value="Detalji" onClick={this.props.id}/>
-                </div>
+                 
+                  <Link style={vidljivo}  to={"product/"+d.id} >Detalji</Link>
+                </div><br/>
                 <hr />
                 <h2 className="cenaTekst">
                   Cena : {d.cena} <span id="cen">RSD</span>
@@ -51,12 +62,6 @@ class Kartica extends Component {
 
 
 
-        {/* {this.state.fav.map(f=>(
-            <div>
-            <h1>{f.title}</h1>
-            <h2>{f.content}</h2>
-            </div>
-        ))} */}
       </div>
     );
   }

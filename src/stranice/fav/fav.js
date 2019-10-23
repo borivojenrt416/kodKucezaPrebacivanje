@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Gde from "../komponente/gde";
-
+import {
+  Link,
+} from "react-router-dom";
 
 class Fav extends Component {
   constructor(props) {
@@ -29,28 +31,7 @@ class Fav extends Component {
   };
 
 
-  idiNaDetalje=(e)=>{
-    console.log(e.target.id)
-    var objec=null;
-    console.log(this.state.omiljeno[0])
-    for(let k=0;k<this.state.omiljeno.length;k++)
-           {
-              
-                   if(e.target.id===this.state.omiljeno[k].title)
-                    {
-                   objec=this.state.omiljeno[k]
  
-                   
-                    }
-               }
-           
-  
-  localStorage.setItem("2",JSON.stringify(objec));
-  console.log(localStorage.getItem("2"))
-  let path="/product"
-  this.props.history.push(path)
-  
-  }
   componentDidMount(){
     this.setState({
       omiljeno:JSON.parse(localStorage.getItem("fav1"))
@@ -58,7 +39,7 @@ class Fav extends Component {
   }
   render(){
     const visina = {
-      height:'23.5vw'
+      height:'25vw'
     };
     const error={
       color:'yellow',
@@ -84,7 +65,13 @@ class Fav extends Component {
     padding:'1.25vw 0'
 
   }
-
+  const vidljivo={
+    textDecoration:'none',
+    border:'1px solid black',
+    padding:'0.5vw',
+    borderRadius:'25%',
+    color:'black'
+  }
     console.log(this.state.omiljeno);
     if(this.state.omiljeno!==null)
     {
@@ -114,7 +101,7 @@ class Fav extends Component {
                 <h5 className="cont">{om.content}</h5>
                 <div className="slika">
                   <img src={om.img} onMouseOver={this.prikazi} />
-                  <input type="button" id={om.title} className="vidljivo" value="Detalji" onClick={this.idiNaDetalje}/>
+                  <Link style={vidljivo}  to={"product/"+om.id} >Detalji</Link>
                 </div>
                 <hr />
                 <h2 className="cenaTekst">

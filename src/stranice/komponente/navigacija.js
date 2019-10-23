@@ -18,6 +18,8 @@ class Navigacija extends Component{
     //     // this.render()
     //  
     // }
+
+
     render(){
         const styleLinks = {
                 textDecoration : 'none',
@@ -40,6 +42,7 @@ class Navigacija extends Component{
                         <Link to="/home" style={styleLinks}><li>HOME</li></Link>
                         <Link to="/onama" style={styleLinks}><li>O NAMA</li></Link>
                         <Link to="/proizvodi" style={styleLinks}><li>PROIZVODI</li></Link>
+                        <Link to="/login" style={desno}><li>Log in/Register</li></Link>
                         <Link to="/omiljeno" style={desno}><li>♥</li></Link>
                         <Link to="/kupovina" style={desno} ><li>🛒{this.props.br}</li></Link>
                     </ul>

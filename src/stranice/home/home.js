@@ -1,5 +1,8 @@
 import React,{Component} from 'react'
 import Gde from '../komponente/gde'
+import {
+  Link,
+} from "react-router-dom";
 
 class Home extends Component{
 constructor(props){
@@ -9,46 +12,28 @@ constructor(props){
        
     }
 }
-idiNaDetalje=(e)=>{
-    console.log(e.target.id)
-    var objec=null;
-    console.log(this.state.best[0])
-    for(let k=0;k<this.state.best.length;k++)
-           {
-              for(let j=0;j<this.state.best[k].length;j++){
-                  console.log(this.state.best[k][j])
-                    for(let o=0;o<this.state.best[k][j].length;o++)
-                    {
-                       if(this.state.best[k][j][o].title===e.target.id)
-                       {
-                           objec = this.state.best[k][j][o]
-                       }
-                    }
-                //    if(e.target.id===this.state.best[k].title)
-                //     {
-                //    objec=this.state.best[k]
- 
-                   
-                //     }
-               }
-           
-  console.log(objec)
-  localStorage.setItem("2",JSON.stringify(objec));
-  console.log(localStorage.getItem("2"))
-  let path="/product"
-  this.props.history.push(path)
-  
-  }
-}
   
     render(){
-      
+      const fav = {
+
+      }
         const st={
             float:'left',
             width:'70%'
         }
         const karta = {
-            height:'24.5vw'
+            height:'26vw'
+        }
+
+        const linkk={
+          textDecoration:'none',
+          border:'1px solid black',
+          padding:'0.5vw',
+          borderRadius:'25%',
+          color:'black'
+        }
+        const visina = {
+          height:'25vw'
         }
         console.log(this.state.best)
         return(
@@ -63,9 +48,9 @@ idiNaDetalje=(e)=>{
                         {/* <button type="button" className="korpa" value={b.title} onClick={this.kupi}>
                           🛒
                         </button> */}
-                        <button type="button" id={b.id} value={b.title} className="fav" onClick={this.props.prosao}>
+                        {/* <button type="button" id={b.id} value={b.title} className="fav" onClick={this.props.prosao}>
                 ♥
-              </button>
+              </button> */}
                         <h1 className="ime">{b.title}</h1> <br />
                         <div className="opis">
                         <br/><br/><br/><br/>
@@ -78,7 +63,8 @@ idiNaDetalje=(e)=>{
                             Cena : {b.cena} <span id="cen">RSD</span>
                           </h2>
                         </div><br/>
-                        <input type="button" id={b.title} className="obicno" value="Detalji" onClick={this.idiNaDetalje}/>
+                       
+                        <Link className="obicno" style={linkk} to={"product/"+b.id} >Detalji</Link>
                       </div>
                     ))
                 )

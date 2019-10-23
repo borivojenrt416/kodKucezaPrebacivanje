@@ -86,30 +86,7 @@ ponovo=()=>
       };
     
     
-      idiNaDetalje=(id)=>{
-        console.log(id)
-        var objec=null;
-        console.log(this.state.kupljeno[0])
-        for(let k=0;k<this.state.kupljeno.length;k++)
-               {
-                  
-                       if(id===this.state.kupljeno[k].title)
-                        {
-                       objec=this.state.kupljeno[k]
-     
-                       
-                        }
-                   }
-               
-      
-      localStorage.setItem("2",JSON.stringify(objec));
-      console.log(localStorage.getItem("2"))
-      let path="/product"
-      return path;
-
-      
-      }
-
+    
 
   
       componentDidMount(){
@@ -202,6 +179,15 @@ ponovo=()=>
           padding:'1.25vw 0'
 
         }
+
+        const linkk={
+          textDecoration:'none',
+          border:'1px solid black',
+          padding:'0.5vw',
+          borderRadius:'25%',
+          color:'black'
+        }
+      
         console.log(this.state.kupljeno)
         if(this.state.kupljeno!==null){
           if(this.state.kupljeno.length!==0)
@@ -230,7 +216,7 @@ ponovo=()=>
                     <h5 className="cont">{om.content}</h5>
                     <div className="slika">
                       <img src={om.img} onMouseOver={this.prikazi} />
-                      <Link to={this.idiNaDetalje(om.id)} >Detalji</Link>
+                      <Link style={linkk} to={"product/"+om.id} >Detalji</Link>
                     </div>
                     <hr />
                     <h2 className="cenaTekst">
